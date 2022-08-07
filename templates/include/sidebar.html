@@ -2,13 +2,13 @@
 <div class="search-bar w3layouts-newsletter">
     <h3 class="sear-head editContent">Поиск фильма</h3>
     <form action="#" method="post" class="d-flex editContent">
-        <input type="search" placeholder="Введите название..." name="search" class="form-control"
-               required="">
+        <input type="search" placeholder="Введите название..." name="search"
+               class="form-control" required="">
         <button class="btn1 btn"><span class="fa fa-search" aria-hidden="true"></span></button>
     </form>
 </div>
 <!--preference -->
-<form action="{% url 'filter' %}" method="get">
+<form action="{% url 'json_filter' %}" method="get" name="filter">
     <div class="left-side my-4">
         <h3 class="sear-head editContent">Жанры</h3>
         <ul class="w3layouts-box-list">
@@ -20,9 +20,9 @@
             {% endfor %}
         </ul>
     </div>
-<!-- // preference -->
-<!-- discounts -->
+    <!-- // preference -->
 
+    <!-- discounts -->
     <div class="left-side">
         <h3 class="sear-head editContent">Год</h3>
         <ul class="w3layouts-box-list">
@@ -93,8 +93,4 @@
         </li>
     </ul>
 </div>
-<!-- //reviews -->
 {% get_last_movies count=3 %}
-
-
-<!-- //product left -->
