@@ -60,9 +60,15 @@ class Movie(models.Model):
     genres = models.ManyToManyField(Genre, verbose_name="жанры")
     world_premiere = models.DateField("Примьера в мире", default=date.today)
     budget = models.PositiveIntegerField("Бюджет", default=0, help_text="указывать сумму в долларах")
-    fees_in_usa = models.PositiveIntegerField("Сборы в США", default=0, help_text="указывать сумму в долларах")
-    fess_in_world = models.PositiveIntegerField("Сборы в мире", default=0, help_text="указывать сумму в долларах")
-    category = models.ForeignKey(Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True)
+    fees_in_usa = models.PositiveIntegerField(
+        "Сборы в США", default=0, help_text="указывать сумму в долларах"
+    )
+    fess_in_world = models.PositiveIntegerField(
+        "Сборы в мире", default=0, help_text="указывать сумму в долларах"
+    )
+    category = models.ForeignKey(
+        Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True
+    )
     url = models.SlugField(max_length=130, unique=True)
     draft = models.BooleanField("Черновик", default=False)
 
@@ -96,8 +102,8 @@ class MovieShots(models.Model):
 
 
 class RatingStar(models.Model):
-    """Звезда рейтинг"""
-    value = models.PositiveSmallIntegerField("Значение", default=0)
+    """Звезда рейтинга"""
+    value = models.SmallIntegerField("Значение", default=0)
 
     def __str__(self):
         return self.value
@@ -126,7 +132,9 @@ class Reviews(models.Model):
     email = models.EmailField()
     name = models.CharField("Имя", max_length=100)
     text = models.TextField("Сообщение", max_length=5000)
-    parent = models.ForeignKey('self', verbose_name="Родитель", on_delete=models.SET_NULL, blank=True, null=True)
+    parent = models.ForeignKey(
+        'self', verbose_name="Родитель", on_delete=models.SET_NULL, blank=True, null=True
+    )
     movie = models.ForeignKey(Movie, verbose_name="фильм", on_delete=models.CASCADE)
 
     def __str__(self):
