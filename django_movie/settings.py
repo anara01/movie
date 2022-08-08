@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'ckeditor',
     'ckeditor_uploader',
     'movies',
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'django_movie.urls'
@@ -199,7 +201,10 @@ CKEDITOR_CONFIGS = {
 }
 
 
+
 RECAPTCHA_PUBLIC_KEY = "6LfTSFkhAAAAAGZZClykuHdPmNzl8J21hsoc63YG"
 RECAPTCHA_PRIVATE_KEY = "6LfTSFkhAAAAAHrovUbJDTli3MRJbfvZK0DUH9wk"
 RECAPTCHA_DEFAULT_ACTION = "generic"
 RECAPTCHA_SCORE_THRESHOLD = 0.5
+
+SITE_ID = 1
